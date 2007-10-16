@@ -1,0 +1,11 @@
+category: Web Perl
+requires: cygwin apache2 libapr1 libaprutil1 perl perl-URI perl-libwww-perl
+sdesc: "Apache 2.x mod_perl module"
+ldesc: "mod_perl brings together the full power of the Perl programming 
+language and the Apache HTTP server. You can use Perl to manage Apache, 
+respond to requests for web pages and much more.
+
+mod_perl gives you a persistent Perl interpreter embedded in your web
+server. This lets you avoid the overhead of starting an external
+interpreter and avoids the penalty of Perl start-up time, giving you
+super-fast dynamic content."
