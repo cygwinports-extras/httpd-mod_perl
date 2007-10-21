@@ -51,6 +51,7 @@ This will create:
 Files included in the binary package:
 
   /etc/postinstall/apache2-mod_perl.sh
+  /etc/preremove/apache2-mod_perl.sh
   /etc/profile.d/apache2-mod_perl.csh
   /etc/profile.d/apache2-mod_perl.sh
   /usr/bin/mp2bug
