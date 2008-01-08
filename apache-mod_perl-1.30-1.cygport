@@ -1,0 +1,28 @@
+inherit apache perl
+
+HOMEPAGE="http://perl.apache.org/"
+SRC_URI="http://perl.apache.org/dist/${ORIG_P}.tar.gz"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	${PERL} Makefile.PL ${@} PREFIX=/usr INSTALLDIRS=vendor \
+		USE_APXS=1 WITH_APXS=${APXS} EVERYTHING=1 \
+		|| error "Perl Makefile.PL failed"
+	cygmake all manifypods \
+		LIBEXT="dll" \
+		MP_LD="gcc -shared -Wl,--export-all-symbols -Wl,--out-implib,libperl.dll.a" \
+		MP_LIBS="\$(PERL_LIBS) ${LIBHTTPD}"
+}
+
+src_install() {
+	cd ${B}
+	cyginstall LIBEXT="dll"
+
+	# needed for libapreq Perl bindings
+	insinto ${APXS_LIBEXECDIR}
+	doins apaci/libperl.dll.a
+
+	apache_postinst
+	perl_postinst
+}
