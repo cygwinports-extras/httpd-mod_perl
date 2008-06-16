@@ -1,0 +1,25 @@
+inherit apache perl
+
+HOMEPAGE="http://perl.apache.org/"
+SRC_URI="http://perl.apache.org/dist/${ORIG_P}.tar.gz
+         http://perl.apache.org/dist/${ORIG_P}.tar.gz.asc"
+
+DEPS_PATH="${APXS_LIBEXECDIR}"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	perl_compile MP_APXS=${APXS}
+}
+
+src_install() {
+	cd ${B}
+	perl_install
+	perl_postinst
+
+	# needed for libapreq2 Perl bindings
+	insinto ${APXS_LIBEXECDIR}
+	doins src/modules/perl/mod_perl.dll.a
+
+	apache_postinst
+}
