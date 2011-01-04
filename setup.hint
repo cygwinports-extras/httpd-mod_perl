@@ -1,5 +1,5 @@
 category: Web Perl
-requires: apache2 libapr1 libaprutil1 perl
+requires: apache2 libapr1 libaprutil1 libgcc1 libssp0 perl
 sdesc: "Apache 2.x mod_perl module"
 ldesc: "mod_perl brings together the full power of the Perl programming 
 language and the Apache HTTP server. You can use Perl to manage Apache, 

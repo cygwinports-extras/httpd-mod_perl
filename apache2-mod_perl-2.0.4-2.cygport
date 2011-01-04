@@ -1,15 +1,16 @@
-inherit apache perl
+inherit apache2 perl
 
 HOMEPAGE="http://perl.apache.org/"
 SRC_URI="http://perl.apache.org/dist/${ORIG_P}.tar.gz
          http://perl.apache.org/dist/${ORIG_P}.tar.gz.asc"
+PATCH_URI="2.0.4-no-apr-thread.patch"
 
-DEPS_PATH="${APXS_LIBEXECDIR}"
+DEPS_PATH=${APACHE2_LIBEXECDIR}
 
 src_compile() {
 	lndirs
 	cd ${B}
-	perl_compile MP_APXS=${APXS}
+	perl_compile MP_APXS=${APXS2}
 }
 
 src_install() {
@@ -18,8 +19,8 @@ src_install() {
 	perl_postinst
 
 	# needed for libapreq2 Perl bindings
-	insinto ${APXS_LIBEXECDIR}
+	insinto ${APACHE2_LIBEXECDIR}
 	doins src/modules/perl/mod_perl.dll.a
 
-	apache_postinst
+	apache2_postinst
 }
