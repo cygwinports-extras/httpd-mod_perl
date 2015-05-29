@@ -1,0 +1,16 @@
+--- origsrc/mod_perl-2.0.8-svn1602105/lib/Apache2/Build.pm	2014-06-12 04:29:09.000000000 -0500
++++ src/mod_perl-2.0.8-svn1602105/lib/Apache2/Build.pm	2015-05-22 11:32:15.118244100 -0500
+@@ -1695,11 +1695,11 @@ sub apache_corelib_cygwin {
+ 
+     my $self = shift;
+     my $mp_src = "$self->{cwd}/src/modules/perl";
+-    my $core = 'httpd2core';
++    my $core = 'httpd';
+ 
+     # There's a problem with user-installed perl on cygwin.
+     # MakeMaker doesn't know about the .dll.a libs and warns
+-    # about missing -lhttpd2core. "Fix" it by copying
++    # about missing -lhttpd. "Fix" it by copying
+     # the lib and adding .a suffix.
+     # For the static build create a soft link, because libhttpd2core.dll.a
+     # doesn't exist at this time.
