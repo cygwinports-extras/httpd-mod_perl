@@ -1,8 +1,8 @@
 inherit httpd perl
 
 NAME="httpd-mod_perl"
-VERSION=2.0.8
-RELEASE=1.20140624svn1602105
+VERSION=2.0.9
+RELEASE=1
 CATEGORY="Web"
 SUMMARY="Apache HTTP Server mod_perl module"
 DESCRIPTION="mod_perl brings together the full power of the Perl programming
@@ -11,10 +11,8 @@ to requests for web pages and much more.  This lets you avoid the overhead of
 starting an external interpreter and avoids the penalty of Perl start-up time,
 giving you super-fast dynamic content."
 HOMEPAGE="http://perl.apache.org/"
-#SRC_URI="http://perl.apache.org/dist/mod_perl-${VERSION}.tar.gz"
-md5sum=b7ae81250061b19d1d06615249071db6
-SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/mod_perl/mod_perl-${VERSION}-svn${RELEASE#*svn}.tar.gz/${md5sum}/mod_perl-${VERSION}-svn${RELEASE#*svn}.tar.gz"
-SRC_DIR="mod_perl-${VERSION}-svn${RELEASE#*svn}"
+SRC_URI="mirror://apache/perl/mod_perl-${VERSION}.tar.gz"
+SRC_DIR="mod_perl-${VERSION}"
 PATCH_URI="2.0.8-cygwin-httpd24.patch"
 
 src_compile() {
